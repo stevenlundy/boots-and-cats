@@ -17,18 +17,17 @@
       <option value="_6_8">6/8</option>
     </select>
     <div class="steps {{ prescale }}">
-      <div class="step" ng-repeat="step in steps" ng-class="{active: step.active}">
-        <input type="radio" name="step{{ $index }}" value="kick" ng-model="step.sound" />
-        <input type="radio" name="step{{ $index }}" value="snare" ng-model="step.sound" />
-        <input type="radio" name="step{{ $index }}" value="hat" ng-model="step.sound" />
-        <input type="radio" name="step{{ $index }}" value="none" ng-model="step.sound" />
+      <div class="step" ng-repeat="step in steps" ng-class="{active: active === $index}" ng-controller="SoundController">
+        <input type="radio" name="step{{ $parent.$index }}" value="{{ sound.name }}" ng-repeat="sound in sounds" ng-model="step.sound" />
       </div>
     </div>
+    <button ng-click="play()" ng-hide="playing">Play</button><button ng-click="stop()" ng-show="playing">Stop</button>
   </form>
 </div>
 
 <script src="/assets/bower/angular/angular.js"></script>
 <script src="app/app.js"></script>
 <script src="app/rhythm-generator/rhythm-generator.js"></script>
+<script src="app/sounds/sounds.js"></script>
 </body>
 </html>
