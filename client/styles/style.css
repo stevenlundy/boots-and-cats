@@ -8,20 +8,38 @@
   display: block;
 }
 
-._4_4 .step:nth-child(4n-3){
-  background-color: #444
+/* Weak Beats */
+._4_4 .step:nth-child(2n-3){
+  background-color: #bbb;
 }
 
-._2_4 .step:nth-child(8n-7){
-  background-color: #444
+._2_4 .step:nth-child(4n-7){
+  background-color: #bbb;
 }
 
 ._6_8 .step:nth-child(3n-2){
-  background-color: #444
+  background-color: #bbb;
+}
+
+._3_4 .step:nth-child(2n-1){
+  background-color: #bbb;
+}
+
+/* Strong Beats */
+._4_4 .step:nth-child(4n-3){
+  background-color: #666;
+}
+
+._2_4 .step:nth-child(8n-7){
+  background-color: #666;
+}
+
+._6_8 .step:nth-child(6n-5){
+  background-color: #666;
 }
 
 ._3_4 .step:nth-child(6n-5){
-  background-color: #444
+  background-color: #666;
 }
 
 .steps .step.active {

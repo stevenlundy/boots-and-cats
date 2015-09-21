@@ -16,8 +16,8 @@
       <option value="_2_4">2/4</option>
       <option value="_6_8">6/8</option>
     </select>
-    <div class="steps {{ prescale }}">
-      <div class="step" ng-repeat="step in steps" ng-class="{active: active === $index}" ng-controller="SoundController">
+    <div class="steps {{ prescale }}" ng-controller="SoundController">
+      <div class="step" ng-repeat="step in steps" ng-class="{active: active === $index}">
         <input type="radio" name="step{{ $parent.$index }}" value="{{ sound.name }}" ng-repeat="sound in sounds" ng-model="step.sound" />
       </div>
     </div>
