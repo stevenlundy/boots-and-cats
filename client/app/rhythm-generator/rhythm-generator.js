@@ -21,7 +21,7 @@ app.controller('RhythmGeneratorController', function($scope, $timeout) {
     if($scope.playing){
       $scope.active = ($scope.active + 1) % 16;
       var sound = $scope.steps[$scope.active].sound;
-      console.log(sound);
+      $scope.soundFiles[sound].currentTime = 0; // Seek to beginning if already playing
       $scope.soundFiles[sound].play();
       $timeout(playNext, 60000/$scope.tempo);
     } else {
