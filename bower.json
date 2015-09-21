@@ -1,0 +1,22 @@
+{
+  "name": "boots-and-cats",
+  "version": "1.0.0",
+  "homepage": "https://github.com/stevenlundy/2015-08-mvp",
+  "authors": [
+    "Steven Lundy"
+  ],
+  "description": "An application for generating beatbox mnemonics",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./client/assets/bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.6"
+  }
+}

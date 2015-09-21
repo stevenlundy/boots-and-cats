@@ -1,0 +1,24 @@
+{
+  "name": "boots-and-cats",
+  "version": "1.0.0",
+  "description": "An application for generating beatbox mnemonics",
+  "main": "server/server.js",
+  "dependencies": {
+    "bower": "^1.5.2",
+    "express": "^4.13.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stevenlundy/2015-08-mvp.git"
+  },
+  "author": "Steven Lundy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stevenlundy/2015-08-mvp/issues"
+  },
+  "homepage": "https://github.com/stevenlundy/2015-08-mvp"
+}
