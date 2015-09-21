@@ -23,3 +23,7 @@
 ._3_4 .step:nth-child(6n-5){
   background-color: #444
 }
+
+.steps .step.active {
+  background-color: #2196f3;
+}
