@@ -1,7 +1,25 @@
 .step {
   float: left;
+  background-color: #ccc;
+  border-right: 1px solid #999;
 }
 
 .step input {
   display: block;
+}
+
+._4_4 .step:nth-child(4n-3){
+  background-color: #444
+}
+
+._2_4 .step:nth-child(8n-7){
+  background-color: #444
+}
+
+._6_8 .step:nth-child(3n-2){
+  background-color: #444
+}
+
+._3_4 .step:nth-child(6n-5){
+  background-color: #444
 }
