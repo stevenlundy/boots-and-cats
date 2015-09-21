@@ -9,6 +9,7 @@
 
 <div ng-controller="RhythmGeneratorController">
   <form>
+    <input type="range" ng-model="tempo" min="30" max="260">{{tempo}}
     <div class="steps _4_4">
       <div class="step" ng-repeat="step in steps">
       <input type="radio" name="step{{ $index }}" value="kick" ng-model="step.sound" />
