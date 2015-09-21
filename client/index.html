@@ -1,13 +1,22 @@
 <!DOCTYPE html>
-<html>
-<head ng-app="bootsAndCats">
+<html ng-app="bootsAndCats">
+<head>
   <meta charset="utf-8" />
   <title>Boots and Cats</title>
   <link rel="stylesheet" type="text/css" href="/styles/style.css" />
 </head>
 <body>
 
-<div ng-controller="RhythmGeneratorController"></div>
+<div ng-controller="RhythmGeneratorController">
+  <form>
+    <div ng-repeat="beat in beats">
+    <input type="radio" name="beat{{ $index }}" value="kick" ng-model="beat.sound" />
+    <input type="radio" name="beat{{ $index }}" value="snare" ng-model="beat.sound" />
+    <input type="radio" name="beat{{ $index }}" value="hat" ng-model="beat.sound" />
+    <input type="radio" name="beat{{ $index }}" value="none" ng-model="beat.sound" />
+    </div>
+  </form>
+</div>
 
 <script src="/assets/bower/angular/angular.js"></script>
 <script src="app/app.js"></script>
