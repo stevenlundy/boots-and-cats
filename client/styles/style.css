@@ -1,0 +1,7 @@
+.step {
+  float: left;
+}
+
+.step input {
+  display: block;
+}

@@ -9,11 +9,11 @@
 
 <div ng-controller="RhythmGeneratorController">
   <form>
-    <div ng-repeat="beat in beats">
-    <input type="radio" name="beat{{ $index }}" value="kick" ng-model="beat.sound" />
-    <input type="radio" name="beat{{ $index }}" value="snare" ng-model="beat.sound" />
-    <input type="radio" name="beat{{ $index }}" value="hat" ng-model="beat.sound" />
-    <input type="radio" name="beat{{ $index }}" value="none" ng-model="beat.sound" />
+    <div class="step" ng-repeat="step in steps">
+    <input type="radio" name="step{{ $index }}" value="kick" ng-model="step.sound" />
+    <input type="radio" name="step{{ $index }}" value="snare" ng-model="step.sound" />
+    <input type="radio" name="step{{ $index }}" value="hat" ng-model="step.sound" />
+    <input type="radio" name="step{{ $index }}" value="none" ng-model="step.sound" />
     </div>
   </form>
 </div>
