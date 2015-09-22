@@ -3,13 +3,16 @@ app.controller('RhythmGeneratorController', function($scope, $timeout) {
   $scope.prescale = '_4_4';
   $scope.active = null;
   $scope.steps = [];
-  for(var i = 0; i < 16; i++){
-    $scope.steps[i] = {
-      sound: 'none'
-    };
-  }
+  $scope.clear = function(){
+    for(var i = 0; i < 16; i++){
+      $scope.steps[i] = {
+        sound: 'none'
+      };
+    }
+  };
+  $scope.clear();
 
-  $scope.sounds = ['hihat','snare','kick','none'];
+  $scope.sounds = ['close-hihat','open-hihat','snare','kick','none'];
   $scope.soundFiles = {};
   for (var i = 0; i < $scope.sounds.length; i++) {
     var audioEl = new Audio();
