@@ -21,7 +21,7 @@
         <div class="sound-label" ng-repeat="sound in sounds" ng-click="playSound(sound)">{{ formatSpaces(sound) }}</div>
       </div>
       <div class="steps {{ prescale }}">
-        <div class="step" ng-repeat="step in steps" ng-class="{active: active === $index}">
+        <div class="step" ng-repeat="step in steps | limitTo:getNumSteps()" ng-class="{active: active === $index}">
           <input type="radio" name="step{{ $parent.$index }}" value="{{ sound }}" ng-repeat="sound in sounds" ng-model="step.sound" />
         </div>
       </div>

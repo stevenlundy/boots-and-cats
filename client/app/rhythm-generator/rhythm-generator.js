@@ -31,7 +31,7 @@ app.controller('RhythmGeneratorController', function($scope, $timeout) {
 
   var playNext = function() {
     if($scope.playing){
-      $scope.active = ($scope.active + 1) % 16;
+      $scope.active = ($scope.active + 1) % $scope.getNumSteps();
       $scope.playSound($scope.steps[$scope.active].sound);
       $timeout(playNext, getInterval());
     } else {
@@ -51,6 +51,18 @@ app.controller('RhythmGeneratorController', function($scope, $timeout) {
       stepsPerBeat = 3;
     }
     return 60000/stepsPerBeat/$scope.tempo;
+  }
+
+  $scope.getNumSteps = function() {
+    if($scope.prescale === '_4_4'){
+      return 16;
+    } else if($scope.prescale === '_3_4'){
+      return 12;
+    } else if($scope.prescale === '_2_4'){
+      return 16;
+    } else if($scope.prescale === '_6_8'){
+      return 12;
+    }
   }
 
   $scope.play = function(){
