@@ -1,3 +1,7 @@
+body {
+  background-color: #eee;
+  font-family: helvetica, sans-serif;
+}
 .step {
   float: left;
   background-color: #ccc;
