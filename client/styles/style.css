@@ -1,10 +1,10 @@
 body {
-  background-color: #eee;
+  background-color: #ddd;
   font-family: helvetica, sans-serif;
 }
 .step {
   float: left;
-  background-color: #ccc;
+  background-color: #ddd;
   border-right: 1px solid #999;
 }
 
@@ -18,27 +18,37 @@ body {
 
 /* Weak Beats */
 ._4_4 .step:nth-child(2n-3){
-  background-color: #bbb;
+  background-color: #ccc;
 }
 
 ._2_4 .step:nth-child(4n-7){
-  background-color: #bbb;
+  background-color: #ccc;
 }
 
 ._6_8 .step:nth-child(3n-2){
-  background-color: #bbb;
+  background-color: #ccc;
 }
 
 ._3_4 .step:nth-child(2n-1){
-  background-color: #bbb;
+  background-color: #ccc;
 }
 
-/* Strong Beats */
+/* Medium Beats */
 ._4_4 .step:nth-child(4n-3){
-  background-color: #666;
+  background-color: #999;
 }
 
 ._2_4 .step:nth-child(8n-7){
+  background-color: #999;
+}
+
+
+/* Strong Beats */
+._4_4 .step:nth-child(8n-7){
+  background-color: #666;
+}
+
+._2_4 .step:nth-child(16n-15){
   background-color: #666;
 }
 
@@ -68,6 +78,24 @@ body {
   border-bottom: 1px solid #999;
 }
 
+/* Strong Beats */
+._4_4 .syllable:nth-child(4n-3){
+  font-weight: bold;
+}
+
+._2_4 .syllable:nth-child(8n-7){
+  font-weight: bold;
+}
+
+._6_8 .syllable:nth-child(6n-5){
+  font-weight: bold;
+}
+
+._3_4 .syllable:nth-child(6n-5){
+  font-weight: bold;
+}
+
 .sentence .active {
   color: #2196f3;
 }
+

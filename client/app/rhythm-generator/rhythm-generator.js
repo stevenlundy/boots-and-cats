@@ -44,11 +44,11 @@ app.controller('RhythmGeneratorController', function($scope, $timeout, RhythmGen
   var getInterval = function() {
     var stepsPerBeat;
     if($scope.prescale === '_4_4'){
-      stepsPerBeat = 4;
+      stepsPerBeat = 2;
     } else if($scope.prescale === '_3_4'){
       stepsPerBeat = 2;
     } else if($scope.prescale === '_2_4'){
-      stepsPerBeat = 8;
+      stepsPerBeat = 4;
     } else if($scope.prescale === '_6_8'){
       stepsPerBeat = 6;
     }
