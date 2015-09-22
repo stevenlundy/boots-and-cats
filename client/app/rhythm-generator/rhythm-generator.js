@@ -12,7 +12,7 @@ app.controller('RhythmGeneratorController', function($scope, $timeout) {
   };
   $scope.clear();
 
-  $scope.sounds = ['close-hihat','open-hihat','snare','kick','none'];
+  $scope.sounds = ['hi-hat_closed','hi-hat_open','rimshot','snare','kick_drum','none'];
   $scope.soundFiles = {};
   for (var i = 0; i < $scope.sounds.length; i++) {
     var audioEl = new Audio();
@@ -20,19 +20,26 @@ app.controller('RhythmGeneratorController', function($scope, $timeout) {
     $scope.soundFiles[$scope.sounds[i]] = audioEl;
   }
 
-  playNext = function() {
+  $scope.formatSpaces = function (text) {
+    return text.replace(/_/, ' ');
+  }
+
+  $scope.playSound = function (sound) {
+    $scope.soundFiles[sound].currentTime = 0; // Seek to beginning if already playing
+    $scope.soundFiles[sound].play();
+  };
+
+  var playNext = function() {
     if($scope.playing){
       $scope.active = ($scope.active + 1) % 16;
-      var sound = $scope.steps[$scope.active].sound;
-      $scope.soundFiles[sound].currentTime = 0; // Seek to beginning if already playing
-      $scope.soundFiles[sound].play();
+      $scope.playSound($scope.steps[$scope.active].sound);
       $timeout(playNext, getInterval());
     } else {
       $scope.active = null;
     }
-  }
+  };
 
-  getInterval = function() {
+  var getInterval = function() {
     var stepsPerBeat;
     if($scope.prescale === '_4_4'){
       stepsPerBeat = 4;

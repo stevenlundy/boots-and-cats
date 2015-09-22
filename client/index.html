@@ -18,7 +18,7 @@
     </select>
     <section>
       <div class="sound-labels">
-        <div class="sound-label" ng-repeat="sound in sounds">{{ sound }}</div>
+        <div class="sound-label" ng-repeat="sound in sounds" ng-click="playSound(sound)">{{ formatSpaces(sound) }}</div>
       </div>
       <div class="steps {{ prescale }}">
         <div class="step" ng-repeat="step in steps" ng-class="{active: active === $index}">

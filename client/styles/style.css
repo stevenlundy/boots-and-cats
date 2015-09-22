@@ -53,6 +53,7 @@
 .sound-labels {
   float: left;
   text-align: right;
+  text-transform: capitalize;
 }
 .sound-label {
   height: 23px;
