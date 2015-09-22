@@ -1,4 +1,4 @@
-app.controller('RhythmGeneratorController', function($scope, $timeout) {
+app.controller('RhythmGeneratorController', function($scope, $timeout, RhythmGenerator) {
   $scope.tempo = 100;
   $scope.prescale = '_4_4';
   $scope.active = null;
@@ -22,7 +22,7 @@ app.controller('RhythmGeneratorController', function($scope, $timeout) {
 
   $scope.formatSpaces = function (text) {
     return text.replace(/_/, ' ');
-  }
+  };
 
   $scope.playSound = function (sound) {
     $scope.soundFiles[sound].currentTime = 0; // Seek to beginning if already playing
@@ -48,9 +48,14 @@ app.controller('RhythmGeneratorController', function($scope, $timeout) {
     } else if($scope.prescale === '_2_4'){
       stepsPerBeat = 8;
     } else if($scope.prescale === '_6_8'){
-      stepsPerBeat = 3;
+      stepsPerBeat = 6;
     }
     return 60000/stepsPerBeat/$scope.tempo;
+  };
+
+  $scope.parseBeat = function(){
+    var result = RhythmGenerator.parseBeat($scope.steps.slice(0, $scope.getNumSteps()));
+    console.log(result);
   }
 
   $scope.getNumSteps = function() {
@@ -63,7 +68,7 @@ app.controller('RhythmGeneratorController', function($scope, $timeout) {
     } else if($scope.prescale === '_6_8'){
       return 12;
     }
-  }
+  };
 
   $scope.play = function(){
     $scope.active = -1;

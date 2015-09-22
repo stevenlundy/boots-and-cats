@@ -28,11 +28,13 @@
     </section>
     <button ng-click="clear()">Clear</button>
     <button ng-click="play()" ng-hide="playing">Play</button><button ng-click="stop()" ng-show="playing">Stop</button>
+    <button ng-click="parseBeat()">Get English</button>
   </form>
 </div>
 
 <script src="/assets/bower/angular/angular.js"></script>
 <script src="app/app.js"></script>
+<script src="app/services/services.js"></script>
 <script src="app/rhythm-generator/rhythm-generator.js"></script>
 </body>
 </html>
