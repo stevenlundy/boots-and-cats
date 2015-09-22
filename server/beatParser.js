@@ -1,7 +1,7 @@
 var beats = {
   'kick_drum,kick_drum': ['ba','by '],
   'kick_drum,rimshot': ['boo','k '],
-  'kick_drum,hi-hat_closed': ['boa','ing '],
+  'kick_drum,hi-hat_closed': ['boa','ting '],
   'kick_drum,hi-hat_open': ['boo','ts and '],
   'kick_drum,none': ['boar',' '],
   'kick_drum,snare': ['ba','tch '],
