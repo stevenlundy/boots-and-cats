@@ -1,6 +1,6 @@
 app.controller('RhythmGeneratorController', function($scope, $timeout) {
   $scope.tempo = 100;
-  $scope.prescale = "_4_4";
+  $scope.prescale = '_4_4';
   $scope.active = null;
   $scope.steps = [];
   for(var i = 0; i < 16; i++){
@@ -23,10 +23,24 @@ app.controller('RhythmGeneratorController', function($scope, $timeout) {
       var sound = $scope.steps[$scope.active].sound;
       $scope.soundFiles[sound].currentTime = 0; // Seek to beginning if already playing
       $scope.soundFiles[sound].play();
-      $timeout(playNext, 60000/$scope.tempo);
+      $timeout(playNext, getInterval());
     } else {
       $scope.active = null;
     }
+  }
+
+  getInterval = function() {
+    var stepsPerBeat;
+    if($scope.prescale === '_4_4'){
+      stepsPerBeat = 4;
+    } else if($scope.prescale === '_3_4'){
+      stepsPerBeat = 2;
+    } else if($scope.prescale === '_2_4'){
+      stepsPerBeat = 8;
+    } else if($scope.prescale === '_6_8'){
+      stepsPerBeat = 3;
+    }
+    return 60000/stepsPerBeat/$scope.tempo;
   }
 
   $scope.play = function(){
