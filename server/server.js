@@ -11,8 +11,8 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../client'));
 
 app.post('/api/parse-beat/', function (req, res) {
-  console.log(beatParser.parse(req.body.steps));
-  res.send('data was received!\n'+req.body.steps);
+  var beatSentence = beatParser.parse(req.body.steps);
+  res.send({sentence: beatSentence});
 });
 
 var server = app.listen(port, function () {

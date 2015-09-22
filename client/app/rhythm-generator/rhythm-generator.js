@@ -3,7 +3,9 @@ app.controller('RhythmGeneratorController', function($scope, $timeout, RhythmGen
   $scope.prescale = '_4_4';
   $scope.active = null;
   $scope.steps = [];
+  $scope.sentence = '';
   $scope.clear = function(){
+    $scope.sentence = '';
     for(var i = 0; i < 16; i++){
       $scope.steps[i] = {
         sound: 'none'
@@ -54,9 +56,11 @@ app.controller('RhythmGeneratorController', function($scope, $timeout, RhythmGen
   };
 
   $scope.parseBeat = function(){
-    var result = RhythmGenerator.parseBeat($scope.steps.slice(0, $scope.getNumSteps()));
-    console.log(result);
-  }
+    RhythmGenerator.parseBeat($scope.steps.slice(0, $scope.getNumSteps()))
+      .then(function(sentence) {
+        $scope.sentence = sentence;
+      });
+  };
 
   $scope.getNumSteps = function() {
     if($scope.prescale === '_4_4'){
