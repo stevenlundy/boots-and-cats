@@ -9,26 +9,32 @@
 <h1>Boots and Cats</h1>
 <div ng-controller="RhythmGeneratorController">
   <form>
-    <input type="range" ng-model="tempo" min="40" max="208">{{tempo}}
-    <select ng-model="prescale">
-      <option value="_4_4">4/4</option>
-      <option value="_3_4">3/4</option>
-      <option value="_2_4">2/4</option>
-      <option value="_6_8">6/8</option>
-    </select>
-    <section>
+    <div>
+      <input type="range" ng-model="tempo" min="40" max="208">{{tempo}}
+      <select ng-model="prescale">
+        <option value="_4_4">4/4</option>
+        <option value="_3_4">3/4</option>
+        <option value="_2_4">2/4</option>
+        <option value="_6_8">6/8</option>
+      </select>
+    </div>
+    <div class="beat-input">
       <div class="sound-labels">
-        <div class="sound-label" ng-repeat="sound in sounds" ng-click="playSound(sound)">{{ formatSpaces(sound) }}</div>
+        <div class="sound-label" ng-repeat="sound in sounds" ng-click="playSound(sound)">
+          {{ formatSpaces(sound) }}
+        </div>
       </div>
       <div class="steps {{ prescale }}">
         <div class="step" ng-repeat="step in steps | limitTo:getNumSteps()" ng-class="{active: active === $index}">
-          <input type="radio" name="step{{ $parent.$index }}" value="{{ sound }}" ng-repeat="sound in sounds" ng-model="step.sound" />
+          <input type="radio" name="step{{ $parent.$index }}" value="{{ sound }}" ng-repeat="sound in sounds" ng-model="step.sound" ng-change="parseBeat()"/>
         </div>
       </div>
-    </section>
-    <button ng-click="clear()">Clear</button>
-    <button ng-click="play()" ng-hide="playing">Play</button><button ng-click="stop()" ng-show="playing">Stop</button>
-    <button ng-click="parseBeat()">Get English</button>
+    </div>
+    <div>
+      <button ng-click="clear()">Clear</button>
+      <button ng-click="play()" ng-hide="playing">Play</button><button ng-click="stop()" ng-show="playing">Stop</button>
+      <!-- <button ng-click="parseBeat()">Get English</button> -->
+      </div>
   </form>
   <div class='sentence {{ prescale }}'><span class='syllable' ng-repeat="syllable in syllables track by $index" ng-class="{active: active === $index}">{{ syllable }}</span></div>
 </div>

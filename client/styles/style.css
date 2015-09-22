@@ -8,6 +8,10 @@ body {
   border-right: 1px solid #999;
 }
 
+.step:last-child {
+  border-right: 0;
+}
+
 .step input {
   height: 23px;
   margin: 0 5px;
@@ -64,11 +68,16 @@ body {
   background-color: #2196f3;
 }
 
+.steps {
+  float: left;
+}
+
 .sound-labels {
   float: left;
   text-align: right;
   text-transform: capitalize;
 }
+
 .sound-label {
   height: 23px;
   margin: 0;
@@ -76,6 +85,10 @@ body {
   box-sizing: border-box;
   background-color: #bbb;
   border-bottom: 1px solid #999;
+}
+
+.sound-label:last-child{
+  border-bottom: 0;
 }
 
 /* Strong Beats */
@@ -98,4 +111,11 @@ body {
 .sentence .active {
   color: #2196f3;
 }
+
+.beat-input {
+  clear: both;
+  display: inline-block;
+  border: 1px solid #999;
+}
+
 
