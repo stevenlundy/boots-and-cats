@@ -67,3 +67,7 @@ body {
   background-color: #bbb;
   border-bottom: 1px solid #999;
 }
+
+.sentence .active {
+  color: #2196f3;
+}

@@ -11,7 +11,7 @@ app.factory('RhythmGenerator', function ($http) {
       url: '/api/parse-beat',
       data: data
     }).then(function (res) {
-      return res.data.sentence;
+      return res.data.syllables;
     })
   };
 
