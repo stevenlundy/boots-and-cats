@@ -5,6 +5,10 @@
 }
 
 .step input {
+  height: 23px;
+  margin: 0 5px;
+  padding: 5px;
+  box-sizing: border-box;
   display: block;
 }
 
@@ -44,4 +48,17 @@
 
 .steps .step.active {
   background-color: #2196f3;
+}
+
+.sound-labels {
+  float: left;
+  text-align: right;
+}
+.sound-label {
+  height: 23px;
+  margin: 0;
+  padding: 5px;
+  box-sizing: border-box;
+  background-color: #bbb;
+  border-bottom: 1px solid #999;
 }

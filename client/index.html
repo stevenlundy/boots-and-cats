@@ -16,11 +16,16 @@
       <option value="_2_4">2/4</option>
       <option value="_6_8">6/8</option>
     </select>
-    <div class="steps {{ prescale }}">
-      <div class="step" ng-repeat="step in steps" ng-class="{active: active === $index}">
-        <input type="radio" name="step{{ $parent.$index }}" value="{{ sound }}" ng-repeat="sound in sounds" ng-model="step.sound" />
+    <section>
+      <div class="sound-labels">
+        <div class="sound-label" ng-repeat="sound in sounds">{{ sound }}</div>
       </div>
-    </div>
+      <div class="steps {{ prescale }}">
+        <div class="step" ng-repeat="step in steps" ng-class="{active: active === $index}">
+          <input type="radio" name="step{{ $parent.$index }}" value="{{ sound }}" ng-repeat="sound in sounds" ng-model="step.sound" />
+        </div>
+      </div>
+    </section>
     <button ng-click="clear()">Clear</button>
     <button ng-click="play()" ng-hide="playing">Play</button><button ng-click="stop()" ng-show="playing">Stop</button>
   </form>
