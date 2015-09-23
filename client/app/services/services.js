@@ -18,4 +18,44 @@ app.factory('RhythmGenerator', function ($http) {
   return {
     parseBeat: parseBeat
   };
+})
+.factory('BeatStorage', function ($location) {
+  var readBeatStore = function(keyArray){
+    var beat = $location.search();
+    if(beat.steps === undefined) {
+      return beat;
+    }
+    var steps = [];
+    for (var i = 0; i < 16; i++) {
+      steps.push({
+        sound: keyArray[beat.steps.charAt(i)] || 'none'
+      });
+    }
+    beat.steps = steps;
+    return beat;
+  };
+
+  var createBeatStore = function (beat, keyArray) {
+    var beatString = '';
+    for (var i = 0; i < beat.steps.length; i++) {
+      beatString += keyArray.indexOf(beat.steps[i].sound);
+    }
+    beat.steps = beatString;
+    return beat;
+  };
+
+  var writeBeatStore = function (beat) {
+    var path = [];
+    for (var key in beat) {
+      $location.search(key, beat[key]);
+      path.push(key+'='+beat[key]);
+    }
+    return '?' + path.join('&');
+  };
+
+  return {
+    readBeatStore: readBeatStore,
+    createBeatStore: createBeatStore,
+    writeBeatStore: writeBeatStore
+  }
 });

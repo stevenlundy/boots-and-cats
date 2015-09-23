@@ -2,6 +2,12 @@ body {
   background-color: #ddd;
   font-family: helvetica, sans-serif;
 }
+
+.container {
+  margin: 0 auto;
+  width: 500px;
+}
+
 .step {
   float: left;
   background-color: #ddd;
@@ -118,4 +124,6 @@ body {
   border: 1px solid #999;
 }
 
-
+.url {
+  width: 80%;
+}

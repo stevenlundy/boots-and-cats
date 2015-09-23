@@ -1,9 +1,5 @@
-app.controller('RhythmGeneratorController', function($scope, $timeout, RhythmGenerator) {
-  $scope.tempo = 100;
-  $scope.prescale = '_4_4';
-  $scope.active = null;
-  $scope.steps = [];
-  $scope.syllables = [];
+app.controller('RhythmGeneratorController', function($scope, $timeout, RhythmGenerator, BeatStorage) {
+
   $scope.clear = function(){
     $scope.syllables = [];
     for(var i = 0; i < 16; i++){
@@ -12,7 +8,6 @@ app.controller('RhythmGeneratorController', function($scope, $timeout, RhythmGen
       };
     }
   };
-  $scope.clear();
 
   $scope.sounds = ['hi-hat_closed','hi-hat_open','rimshot','snare','kick_drum','none'];
   $scope.soundFiles = {};
@@ -24,6 +19,32 @@ app.controller('RhythmGeneratorController', function($scope, $timeout, RhythmGen
 
   $scope.formatSpaces = function (text) {
     return text.replace(/_/, ' ');
+  };
+
+  var getInterval = function() {
+    var stepsPerBeat;
+    if($scope.prescale === '_4_4'){
+      stepsPerBeat = 2;
+    } else if($scope.prescale === '_3_4'){
+      stepsPerBeat = 2;
+    } else if($scope.prescale === '_2_4'){
+      stepsPerBeat = 4;
+    } else if($scope.prescale === '_6_8'){
+      stepsPerBeat = 6;
+    }
+    return 60000/stepsPerBeat/$scope.tempo;
+  };
+
+  $scope.getNumSteps = function() {
+    if($scope.prescale === '_4_4'){
+      return 16;
+    } else if($scope.prescale === '_3_4'){
+      return 12;
+    } else if($scope.prescale === '_2_4'){
+      return 16;
+    } else if($scope.prescale === '_6_8'){
+      return 12;
+    }
   };
 
   $scope.playSound = function (sound) {
@@ -41,47 +62,42 @@ app.controller('RhythmGeneratorController', function($scope, $timeout, RhythmGen
     }
   };
 
-  var getInterval = function() {
-    var stepsPerBeat;
-    if($scope.prescale === '_4_4'){
-      stepsPerBeat = 2;
-    } else if($scope.prescale === '_3_4'){
-      stepsPerBeat = 2;
-    } else if($scope.prescale === '_2_4'){
-      stepsPerBeat = 4;
-    } else if($scope.prescale === '_6_8'){
-      stepsPerBeat = 6;
-    }
-    return 60000/stepsPerBeat/$scope.tempo;
+  $scope.play = function() {
+    $scope.active = -1;
+    $scope.playing = true;
+    playNext();
   };
 
-  $scope.parseBeat = function(){
+  $scope.stop = function() {
+    $scope.playing = false;
+  };
+
+  $scope.parseBeat = function() {
     RhythmGenerator.parseBeat($scope.steps.slice(0, $scope.getNumSteps()))
       .then(function(syllables) {
         $scope.syllables = syllables;
       });
   };
 
-  $scope.getNumSteps = function() {
-    if($scope.prescale === '_4_4'){
-      return 16;
-    } else if($scope.prescale === '_3_4'){
-      return 12;
-    } else if($scope.prescale === '_2_4'){
-      return 16;
-    } else if($scope.prescale === '_6_8'){
-      return 12;
-    }
+  $scope.setShareUrl = function() {
+    var beat = BeatStorage.createBeatStore({
+      tempo: $scope.tempo,
+      prescale: $scope.prescale,
+      steps: $scope.steps
+    }, $scope.sounds);
+    path = BeatStorage.writeBeatStore(beat);
+    $scope.shareUrl = window.location.origin + '/' + path;
   };
 
-  $scope.play = function(){
-    $scope.active = -1;
-    $scope.playing = true;
-    playNext();
-  };
-
-  $scope.stop = function(){
-    $scope.playing = false;
-  };
-
+  var storedBeat = BeatStorage.readBeatStore($scope.sounds);
+  $scope.tempo = storedBeat.tempo || 100;
+  $scope.prescale = storedBeat.prescale || '_4_4';
+  $scope.active = null;
+  $scope.syllables = [];
+  $scope.steps = storedBeat.steps || [];
+  if($scope.steps.length === 0){
+    $scope.clear();
+  } else {
+    $scope.parseBeat();
+  }
 });
