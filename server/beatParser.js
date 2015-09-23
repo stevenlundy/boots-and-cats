@@ -40,9 +40,7 @@ var beats = {
 module.exports.parse = function(steps){
   var output = [];
   for (var i = 0; i < steps.length; i += 2) {
-    console.log(steps.slice(i, i+2).toString());
     var soundPair = steps.slice(i, i+2).toString();
-    console.log(beats[soundPair])
     output = output.concat(beats[soundPair]);
   }
   return output;
