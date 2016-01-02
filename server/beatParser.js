@@ -40,8 +40,15 @@ var beats = {
 module.exports.parse = function(steps){
   var output = [];
   for (var i = 0; i < steps.length; i += 2) {
-    var soundPair = steps.slice(i, i+2).toString();
-    output = output.concat(beats[soundPair]);
+    if(steps[i + 1] === 'none' && steps[i + 3] === 'none') {
+      // half time beat
+      var soundPair = steps[i] + ',' + steps[i + 2];
+      output = output.concat([beats[soundPair][0], '', beats[soundPair][1], '']);
+      i += 2;
+    } else {
+      var soundPair = steps.slice(i, i + 2).toString();
+      output = output.concat(beats[soundPair]);
+    }
   }
   return output;
 }
