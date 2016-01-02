@@ -1,12 +1,19 @@
 app.controller('RhythmGeneratorController', function($scope, $timeout, RhythmGenerator, BeatStorage) {
 
-  $scope.clear = function(){
+  $scope.clear = function() {
     $scope.syllables = [];
     for(var i = 0; i < 16; i++){
       $scope.steps[i] = {
         sound: 'none'
       };
     }
+  };
+
+  $scope.setDemoBeat = function() {
+    $scope.steps[0].sound = 'kick_drum';
+    $scope.steps[1].sound = 'hi-hat_open';
+    $scope.steps[2].sound = 'rimshot';
+    $scope.steps[3].sound = 'hi-hat_open';
   };
 
   $scope.sounds = ['hi-hat_closed','hi-hat_open','rimshot','snare','kick_drum','none'];
@@ -97,7 +104,8 @@ app.controller('RhythmGeneratorController', function($scope, $timeout, RhythmGen
   $scope.steps = storedBeat.steps || [];
   if($scope.steps.length === 0){
     $scope.clear();
-  } else {
-    $scope.parseBeat();
+    $scope.setDemoBeat();
   }
+  $scope.parseBeat();
+
 });
