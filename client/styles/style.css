@@ -129,3 +129,8 @@ body {
 .url {
   width: 80%;
 }
+
+.help-text {
+  color: #666;
+  font-size: 80%;
+}

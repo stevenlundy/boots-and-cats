@@ -9,6 +9,7 @@
 <body>
 <div class="container">
   <h1>Boots and Cats</h1>
+  <p class="help-text">Design your drum beat using the panel below.</p>
   <div ng-controller="RhythmGeneratorController">
     <form>
       <div>
@@ -36,12 +37,17 @@
         <!-- <button ng-click="parseBeat()">Get English</button> -->
         </div>
     </form>
+    <p class="help-text">Read this sentence without voicing the vowels to beat box your rhythm! <a href="http://midnightmusic.com.au/2014/08/how-to-beatbox-boots-n-cats-and-other-simple-sentences/">More info</a></p>
     <div class='sentence {{ prescale }}'>
-      <span class='syllable' ng-repeat="syllable in syllables track by $index" ng-class="{active: active === $index}">{{ syllable }}</span>
+      <p>
+        <span class='syllable' ng-repeat="syllable in syllables track by $index" ng-class="{active: active === $index}">{{ syllable }}</span>
+      </p>
     </div>
-
+    <div>
+      <!-- <p class="help-text">Get a link to share with your friends</p> -->
       <button ng-click="setShareUrl()">Share</button>
       <input class="url" type="url" ng-if="shareUrl" ng-model="shareUrl" readonly/>
+    </div>
   </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
